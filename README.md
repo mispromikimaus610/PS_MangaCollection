@@ -42,3 +42,44 @@ src/
     ├── GlavnaForma.java         # Main Dashboard View
     ├── FormaManga.java          # Add/Edit Dialog View
     └── ModelTabeleMange.java    # Custom Table Logic
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+* **JDK 11** or higher.
+* **IDE:** [NetBeans](https://netbeans.apache.org/download/index.html) (Recommended for `.form` file editing) or [IntelliJ IDEA](https://www.jetbrains.com/idea/).
+
+### Installation & Run
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/mispromikimaus610/PS_MangaCollection.git](https://github.com/mispromikimaus610/PS_MangaCollection.git)
+   ```
+2. Open the project in your preferred IDE.
+3. Locate `forme/GlavnaForma.java`.
+4. Run the file (**Ctrl + F11** in NetBeans) to launch the application.
+
+---
+
+## 📸 Screenshots
+<img width="500" height="729" alt="image" src="https://github.com/user-attachments/assets/ab71464f-1933-418f-9514-e4cae7c615ba" />
+<img width="500" height="729" alt="image" src="https://github.com/user-attachments/assets/71eef242-cd92-45ac-89d2-07a811187901" />
+<img width="500" height="729" alt="image" src="https://github.com/user-attachments/assets/f6802585-3ac0-46a3-a167-c31dd1375901" />
+
+Main menu, Add menu and Change menu.
+
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! If you have suggestions for new features or find any bugs, feel free to:
+
+1. **Fork** the Project.
+2. Create your **Feature Branch** (`git checkout -b feature/AmazingFeature`).
+3. **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. **Push** to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a **Pull Request**.
+
+---
+
+Developed by **Miloš** - Feel free to contact me for any questions regarding this project.
