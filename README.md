@@ -1,6 +1,4 @@
-# PS_MangaCollection
-
-# Manga Manager Application 📚
+# PS_MangaCollection 📚
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Swing](https://img.shields.io/badge/Swing-GUI-blue?style=for-the-badge)
