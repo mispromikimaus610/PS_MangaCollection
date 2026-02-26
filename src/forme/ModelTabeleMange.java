@@ -15,11 +15,19 @@ import model.Manga;
 
 public class ModelTabeleMange extends AbstractTableModel {
     private List<Manga> listaMangi;
-    private final String[] kolone= {"Naziv", "Autor", "ISBN", "Godina Izdanja","Zanr","Tom" ,"Poslednji Tom"};
+    private final String[] kolone= {"Id","Naziv", "Autor", "ISBN", "Godina Izdanja","Zanr","Tom" ,"Poslednji Tom"};
     
     public ModelTabeleMange(List<Manga> listaMangi){
         this.listaMangi=listaMangi;
         
+    }
+
+    public List<Manga> getListaMangi() {
+        return listaMangi;
+    }
+
+    public void setListaMangi(List<Manga> listaMangi) {
+        this.listaMangi = listaMangi;
     }
     
     
@@ -38,24 +46,27 @@ public class ModelTabeleMange extends AbstractTableModel {
          Manga manga = listaMangi.get(rowIndex);
          switch(columnIndex){
              case 0 -> {
-                 return manga.getNaziv();
+                 return manga.getId();
             }
              case 1 -> {
-                 return manga.getAutor();
+                 return manga.getNaziv();
             }
              case 2 -> {
-                 return manga.getISBN();
+                 return manga.getAutor();
             }
              case 3 -> {
-                 return manga.getGodinaIzdanja();
+                 return manga.getISBN();
             }
              case 4 -> {
-                 return manga.getZanr();
+                 return manga.getGodinaIzdanja();
             }
              case 5 -> {
-                 return manga.getTom();
+                 return manga.getZanr();
             }
              case 6 -> {
+                 return manga.getTom();
+            }
+             case 7 -> {
                  return manga.getPoslednjiTom();
             }
              default -> {

@@ -11,6 +11,7 @@ import java.util.Objects;
  * @author milos
  */
 public class Manga {
+    private int id;
     private String naziv;
     private Autor autor;
     private String ISBN;
@@ -22,6 +23,17 @@ public class Manga {
     public Manga() {
     }
 
+    public Manga(int id, String naziv, Autor autor, String ISBN, int godinaIzdanja, Zanr zanr, int tom, int poslednjiTom) {
+        this.id= id;
+        this.naziv = naziv;
+        this.autor = autor;
+        this.ISBN = ISBN;
+        this.godinaIzdanja = godinaIzdanja;
+        this.zanr = zanr;
+        this.tom = tom;
+        this.poslednjiTom = poslednjiTom;
+    }
+    
     public Manga(String naziv, Autor autor, String ISBN, int godinaIzdanja, Zanr zanr, int tom, int poslednjiTom) {
         this.naziv = naziv;
         this.autor = autor;
@@ -46,6 +58,14 @@ public class Manga {
 
     public void setPoslednjiTom(int poslednjiTom) {
         this.poslednjiTom = poslednjiTom;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     

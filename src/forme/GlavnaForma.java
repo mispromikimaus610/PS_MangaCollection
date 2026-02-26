@@ -24,7 +24,8 @@ public class GlavnaForma extends javax.swing.JFrame {
     public GlavnaForma() {
         initComponents();
         kontroler = Controller.getInstance();
-        ModelTabeleMange modelTabele= new ModelTabeleMange(kontroler.getListaMangi());
+//        ModelTabeleMange modelTabele= new ModelTabeleMange(kontroler.getListaMangi());
+        ModelTabeleMange modelTabele= new ModelTabeleMange(kontroler.ucitajListuMangiIzBaze());
         jTableMange.setModel(modelTabele);
         
     }
@@ -176,8 +177,10 @@ public class GlavnaForma extends javax.swing.JFrame {
         if(selektovaniRed==-1){
             JOptionPane.showMessageDialog(this, "Morate selektovati knjigu koju zelite obrisati!", "Upozorenje", JOptionPane.WARNING_MESSAGE);
         } else{
+            ModelTabeleMange mtm= (ModelTabeleMange) jTableMange.getModel();
+            int id=mtm.getListaMangi().get(selektovaniRed).getId();
             Controller kontroler = Controller.getInstance();
-            kontroler.obrisiMangu(selektovaniRed);
+            kontroler.obrisiMangu(id);
             
             osveziTabelu();
         }
@@ -197,9 +200,12 @@ public class GlavnaForma extends javax.swing.JFrame {
             return;
         } else{
             
-            Manga selektovanaManga= Controller.getInstance().getListaMangi().get(selektovaniRed);
+            Manga selektovanaManga= (Manga) kontroler.ucitajListuMangiIzBaze().get(selektovaniRed);
             FormaManga fm= new FormaManga(this, true, selektovanaManga);
             fm.setVisible(true);
+            
+            kontroler.azurirajMangu(selektovanaManga);  
+            
             
             osveziTabelu();
         }
@@ -258,8 +264,11 @@ public class GlavnaForma extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     void osveziTabelu() {
-        ModelTabeleMange modelTabele = (ModelTabeleMange) jTableMange.getModel();
-            modelTabele.osveziPodatke();
+        ModelTabeleMange mtm = new ModelTabeleMange(kontroler.ucitajListuMangiIzBaze());
+        jTableMange.setModel(mtm);
+        
+//        ModelTabeleMange modelTabele = (ModelTabeleMange) jTableMange.getModel();
+//            modelTabele.osveziPodatke();
     }
     
 }

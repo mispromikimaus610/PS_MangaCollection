@@ -256,6 +256,7 @@ public class FormaManga extends javax.swing.JDialog {
             poslednjiTom = Integer.parseInt(jTextFieldPoslednjiTom.getText());
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Broj toma mora biti broj!","Greska",JOptionPane.ERROR_MESSAGE);
+            return;
         }
         Manga novaManga = new Manga(naziv, autor, isbn, godinaIzdanja, zanr, tom, poslednjiTom);
         kontroler.dodajMangu(novaManga);
@@ -372,7 +373,7 @@ public class FormaManga extends javax.swing.JDialog {
 
     private void popuniComboBoxAutorima() {
         jComboBoxAutori.removeAllItems();
-        List<Autor> autori=kontroler.getListaAutora();
+        List<Autor> autori=kontroler.ucitajListuAutoraIzBaze();
         for(Autor autor: autori){
             jComboBoxAutori.addItem(autor);
         }
