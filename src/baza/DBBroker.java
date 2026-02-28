@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
 import model.Autor;
+import model.User;
 import model.Zanr;
 
 /**
@@ -139,5 +140,24 @@ public class DBBroker {
         } catch (SQLException ex) {
             Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+
+    public boolean proveriSifru(String user, String pass) {
+       List<User> listaUsera = new ArrayList<>();
+        try {
+            String upit = "SELECT username, PASSWORD FROM USER";
+            Statement st = Konekcija.getInstance().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(upit);
+            while(rs.next()){
+                String u = rs.getString("username");
+                String p = rs.getString("password");
+                if(u.equals(user)&& p.equals(pass)){
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

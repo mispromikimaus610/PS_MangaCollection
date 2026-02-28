@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.SpringLayout;
 import model.Autor;
 import model.Manga;
+import model.User;
 import model.Zanr;
 
 /**
@@ -21,6 +22,7 @@ public class Controller {
     private DBBroker dbb;
     private List<Manga> listaMangi = new ArrayList<>();
     private List<Autor> listaAutora = new ArrayList<>();
+    private List<User> listaUsera = new ArrayList<>();
 
     private static Controller instance; // Singleton
 
@@ -38,6 +40,16 @@ public class Controller {
     
     private Controller() {
         dbb = new DBBroker();
+        
+//        User u1 = new User(1, "admin", "admin1");
+//        User u2 = new User(2, "admin2", "admin2");
+//        User u3 = new User(3, "admin3", "Admin3");
+//        
+//        listaUsera.add(u1);
+//        listaUsera.add(u2);
+//        listaUsera.add(u3);
+
+        
         
     //        Autor autor1= new Autor("Tomohito", "Oda", 1991, "Oda je odrastao u prefekturi Aichi i još tokom srednje škole pokazivao izrazit talenat za crtanje. Inspiraciju za karijeru mangake dobio je nakon čitanja mange koju mu je preporučio brat. Njegov rani rad World’s Worst One naišao je na slabu recepciju, ali je iskustvo usmerilo njegov umetnički razvoj i stil.\n" +" ");
     //        Autor autor2= new Autor ("Chugong", null, 1984, "Прави идентитет аутора није откривен; „Chugong“ остаје псеудоним, док је познато да писац активно учествује у надгледању адаптација и одговара повремено на питања фанова. Његова дискретност и конзистентан квалитет писања учинили су га кључном фигуром у савременој дигиталној књижевности.");
@@ -58,6 +70,16 @@ public class Controller {
             
     }           
 
+    public List<User> getListaUsera() {
+        return listaUsera;
+    }
+
+    public void setListaUsera(List<User> listaUsera) {
+        this.listaUsera = listaUsera;
+    }
+
+    
+    
     public List<Manga> getListaMangi() {
         return listaMangi;
     }
@@ -93,6 +115,17 @@ public class Controller {
 
     public void azurirajMangu(Manga mangaZaIzmenu) {
         dbb.azurirajMangu(mangaZaIzmenu);
+    }
+
+    public boolean proveriSifru(String user, String pass) {
+//        for(User u:listaUsera){
+//            if(u.getUsername().equals(user) && u.getPassword().equals(pass)){
+//                return true;
+//            }
+//        }
+//        return false;
+        return dbb.proveriSifru(user, pass);
+        
     }
 
 }

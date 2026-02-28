@@ -1,6 +1,7 @@
 # PS_MangaCollection 📚
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Swing](https://img.shields.io/badge/Swing-GUI-blue?style=for-the-badge)
 ![MVC](https://img.shields.io/badge/Pattern-MVC-green?style=for-the-badge)
 
@@ -8,11 +9,12 @@ A robust Java-based desktop application designed for comic book enthusiasts to e
 
 ## ✨ Features
 
-* **Full CRUD Support:** Seamlessly Create, Read, Update, and Delete manga entries.
-* **Author Management:** Integrated database of authors including their biographical information.
-* **Data Validation:** Built-in checks for ISBN formats, publication years, and volume tracking.
-* **Dynamic UI:** Implements a custom `AbstractTableModel` to ensure the data table updates instantly without manual refreshing.
-* **Genre Categorization:** Standardized categories using Java Enums for better data consistency.
+* **Authentication:** Secure login system with user validation (`User` model).
+* **Manga Management:** Complete CRUD functionality (Create, Read, Update, Delete) for manga entries.
+* **Author Database:** Integrated tracking of authors, including biographical data.
+* **Smart Filtering:** Built-in logic for filtering collection by genre, author, and specific publication formats (Manhwa, Manfra).
+* **Dynamic UI:** Custom `AbstractTableModel` (`ModelTabeleMange`) for efficient, real-time data display in `JTable`.
+* **Database Safety:** Manual transaction management (`commit`/`rollback`) to ensure data integrity.
 
 ## 🏗️ Architecture & Technologies
 
@@ -24,23 +26,54 @@ This project demonstrates core software engineering principles and modern Java d
     * **Views:** `GlavnaForma` and `FormaManga` (UI components).
     * **Controller:** `Controller` class (Business logic).
 * **Singleton Design Pattern:** The `Controller` uses a private constructor and a static instance to ensure centralized data management across the entire application.
+* **Broker Pattern:** `DBBroker` centralizes all JDBC logic, isolating SQL queries from the business logic.
+* **External Configuration:** Uses a properties file to manage sensitive database connection strings.
 * **Custom Table Models:** Enhanced `JTable` functionality via `ModelTabeleMange.java`.
+
+## ⚙️ Setup & Installation
+
+### 1. Database Setup 🗄️
+The application requires a MySQL database.
+1.  Open your database manager (XAMPP/SQLyog).
+2.  Import the provided script: `DB_Projecting_Software_1.sql`.
+3.  This will create the database `projecting_software_1` and tables: `manga`, `autor`, and `user`.
+
+### 2. Configuration (`DB_Properties.txt`) 🔐
+To connect the app to your local database:
+1.  Create a file named `DB_Properties.txt` in the **root** folder of the project.
+2.  Use the following format (adjust your port and credentials):
+    ```properties
+    db.url = jdbc:mysql://localhost:****YOUR PORT FOR MySQL****/****NAME OF YOUR BASE****
+    db.user=****YOUR USER ****
+    db.password=****YOUR PASSWORD****
+    ```
+*(Note: This file is ignored by Git for security).*
+
+### 3. Run the App
+1.  Open the project in **NetBeans**.
+2.  Ensure **MySQL JDBC Driver** is in the project libraries.
+3.  Run `LoginForma.java` to start the application.
+
+---
 
 ## 📁 Project Structure
 
 ```text
 src/
+├── baza/
+│   ├── Konekcija.java      # Database connection Singleton
+│   └── DBBroker.java       # SQL execution layer
 ├── controller/
-│   └── Controller.java          # Singleton Logic & Data Management
+│   └── Controller.java     # App logic & Data bridge
 ├── model/
-│   ├── Manga.java               # Manga Entity
-│   ├── Autor.java               # Author Entity
-│   └── Zanr.java                # Genre Enum
+│   ├── Manga.java          # Entity classes
+│   ├── Autor.java
+│   ├── User.java
+│   └── Zanr.java (Enum)
 └── forme/
-    ├── GlavnaForma.java         # Main Dashboard View
-    ├── FormaManga.java          # Add/Edit Dialog View
-    └── ModelTabeleMange.java    # Custom Table Logic
-```
+    ├── LoginForma.java     # Entry point
+    ├── GlavnaForma.java    # Main dashboard
+    └── FormaManga.java     # Add/Edit Dialog
 
 ## 🚀 Getting Started
 
