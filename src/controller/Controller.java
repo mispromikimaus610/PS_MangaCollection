@@ -128,4 +128,14 @@ public class Controller {
         
     }
 
+    public List<Manga> Filtriraj(String naziv, String autor) {
+        return dbb.Filtriraj(naziv,autor);
+    }
+
+    public List<Manga> Filtriraj(Zanr zanr) {
+        List<Manga> filtrirane = new ArrayList<>();
+        filtrirane = dbb.Filtriraj(zanr);
+        return filtrirane;
+    }
+
 }

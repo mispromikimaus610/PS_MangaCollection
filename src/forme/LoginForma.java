@@ -44,6 +44,10 @@ public class LoginForma extends javax.swing.JFrame {
 
         jLabel2.setText("Password:");
 
+        jTextFieldUsername.setText("admin");
+
+        jPasswordField1.setText("admin1");
+
         jButtonUlogujSe.setText("Uloguj se");
         jButtonUlogujSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

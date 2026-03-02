@@ -5,6 +5,7 @@
 package forme;
 
 import controller.Controller;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Manga;
@@ -95,6 +96,11 @@ public class GlavnaForma extends javax.swing.JFrame {
         jLabel2.setText("Autor:");
 
         jComboBoxZanr.setModel(new DefaultComboBoxModel(Zanr.values()));
+        jComboBoxZanr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxZanrActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Zanr:");
 
@@ -103,6 +109,11 @@ public class GlavnaForma extends javax.swing.JFrame {
         jCheckBoxManfra.setText("Manfra");
 
         jButtonFiltriraj.setText("Filtriraj");
+        jButtonFiltriraj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrirajActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,6 +221,28 @@ public class GlavnaForma extends javax.swing.JFrame {
             osveziTabelu();
         }
     }//GEN-LAST:event_jButtonIzmeniActionPerformed
+
+    private void jButtonFiltrirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrirajActionPerformed
+        String naziv = jTextFieldNaziv.getText();
+        String autor = jTextFieldAutor.getText();
+        
+        List<Manga> filtriranaLista = kontroler.Filtriraj(naziv,autor);
+        
+        ModelTabeleMange mtm = new ModelTabeleMange(filtriranaLista);
+        jTableMange.setModel(mtm);
+        
+        
+
+        
+    }//GEN-LAST:event_jButtonFiltrirajActionPerformed
+
+    private void jComboBoxZanrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxZanrActionPerformed
+        Zanr zanr = (Zanr) jComboBoxZanr.getSelectedItem();
+        List<Manga> filtrirane= kontroler.Filtriraj(zanr);
+        
+        ModelTabeleMange mtm = new ModelTabeleMange(filtrirane);
+        jTableMange.setModel(mtm);
+    }//GEN-LAST:event_jComboBoxZanrActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

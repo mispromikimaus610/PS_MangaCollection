@@ -12,7 +12,7 @@ A robust Java-based desktop application designed for comic book enthusiasts to e
 * **Authentication:** Secure login system with user validation (`User` model).
 * **Manga Management:** Complete CRUD functionality (Create, Read, Update, Delete) for manga entries.
 * **Author Database:** Integrated tracking of authors, including biographical data.
-* **Smart Filtering:** Built-in logic for filtering collection by genre, author, and specific publication formats (Manhwa, Manfra).
+* **Smart Filtering:** Built-in logic for filtering collection by genre, author,.
 * **Dynamic UI:** Custom `AbstractTableModel` (`ModelTabeleMange`) for efficient, real-time data display in `JTable`.
 * **Database Safety:** Manual transaction management (`commit`/`rollback`) to ensure data integrity.
 
@@ -22,7 +22,7 @@ This project demonstrates core software engineering principles and modern Java d
 
 * **Java Swing:** Utilized for building the Graphical User Interface (GUI).
 * **MVC Pattern:** Strict separation of concerns between:
-    * **Models:** `Manga`, `Author`, and `Zanr` (Data structures).
+    * **Models:** `Manga`, `Author`,`User` and `Zanr` (Data structures).
     * **Views:** `GlavnaForma` and `FormaManga` (UI components).
     * **Controller:** `Controller` class (Business logic).
 * **Singleton Design Pattern:** The `Controller` uses a private constructor and a static instance to ensure centralized data management across the entire application.
@@ -71,7 +71,7 @@ src/
 │   ├── User.java
 │   └── Zanr.java (Enum)
 └── forme/
-    ├── LoginForma.java     # Entry point
+    ├── ModelTabeleMange.java #Logic for table showing
     ├── GlavnaForma.java    # Main dashboard
     └── FormaManga.java     # Add/Edit Dialog
 ---
